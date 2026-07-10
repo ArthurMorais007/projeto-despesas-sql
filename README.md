@@ -28,8 +28,18 @@ O objetivo é praticar SQL, GROUP BY, SUM e exportação de dados.
 ## 📈 Exemplo de Consulta
 ```sql
 -- Total gasto por mês
-SELECT 
-    mes, 
-    SUM(comida + academia + faculdade + jogo + assinaturas) AS total_gasto
+SELECT * FROM despesas_pessoais;
+
+SELECT mes,
+	ROUND((comida + academia + faculdade + jogo + assinaturas),2) AS Total
 FROM despesas_pessoais
-GROUP BY mes;
+ORDER BY total DESC; 
+
+SELECT mes,
+	ROUND((comida + academia + faculdade + jogo + assinaturas),2) AS Total
+FROM despesas_pessoais
+ORDER BY total DESC
+LIMIT 3;
+
+SELECT ROUND(AVG(comida + academia + faculdade + jogo + assinaturas), 2) AS media_Total
+FROM despesas_pessoais;
