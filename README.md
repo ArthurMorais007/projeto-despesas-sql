@@ -4,7 +4,7 @@ Projeto de banco de dados em MySQL para controle de gastos mensais.
 
 ## Sobre o Projeto
 Esse projeto simula uma tabela de despesas pessoais com os gastos fixos e variáveis do mês.
-O objetivo é praticar SQL, ORDER BY, AVG, ROUND e exportação de dados.
+O objetivo é praticar SQL, GROUP BY, SUM e exportação de dados.
 
 ## 📁Arquivos do Repositório
 - `despesas.sql` → Script para criar a tabela no MySQL
@@ -28,18 +28,19 @@ O objetivo é praticar SQL, ORDER BY, AVG, ROUND e exportação de dados.
 ## 📈 Exemplo de Consulta
 ```sql
 -- Total gasto por mês
-SELECT * FROM despesas_pessoais;
-
+-- 1. Total gasto por mês
 SELECT mes,
-	ROUND((comida + academia + faculdade + jogo + assinaturas),2) AS Total
+       ROUND((comida + academia + faculdade + jogo + assinaturas), 2) AS total_gasto
 FROM despesas_pessoais
-ORDER BY total DESC; 
+ORDER BY total_gasto DESC;
 
+-- 2. Top 3 meses mais caros
 SELECT mes,
-	ROUND((comida + academia + faculdade + jogo + assinaturas),2) AS Total
+       ROUND((comida + academia + faculdade + jogo + assinaturas), 2) AS total_gasto
 FROM despesas_pessoais
-ORDER BY total DESC
+ORDER BY total_gasto DESC
 LIMIT 3;
 
+-- 3. Média de gasto total
 SELECT ROUND(AVG(comida + academia + faculdade + jogo + assinaturas), 2) AS media_Total
 FROM despesas_pessoais;
