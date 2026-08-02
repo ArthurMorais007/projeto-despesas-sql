@@ -86,3 +86,11 @@ SELECT mes,
 FROM despesas_pessoais
 ORDER BY total_gasto ASC
 LIMIT 1;
+
+
+SELECT mes,
+	ROUND(SUM(comida + academia + faculdade + jogo + assinaturas)) AS total_gasto
+	from despesas_pessoais
+	GROUP BY mes
+	HAVING total_gasto > 1400
+	ORDER BY total_gasto DESC;
